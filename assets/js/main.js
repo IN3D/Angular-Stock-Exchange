@@ -18,7 +18,7 @@
 		}
 	];
 
-	var userBank = 10000;
+	var userBank = 10000.00;
 
 
 }).call(this);
