@@ -1,0 +1,37 @@
+html,
+body {
+	min-height: 100%;
+	height: 100%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.inline {
+	display: inline;
+}
+
+.no-bottom-margin {
+	margin-bottom: 0;
+}
+
+.padding {
+	padding: 0 40px;
+}
+
+#sidebar {
+	height: 100%;
+	padding: 20px 0 0 0;
+	background-color: #d9e6fc;
+}
+
+#sidebar li {
+	/*border: 0 #6c737e solid;
+	border-bottom-width: 1px;*/
+	padding: 3px 0 0 5px;
+}
+
+#sidebar .nav {
+	width: 95%;
+}
