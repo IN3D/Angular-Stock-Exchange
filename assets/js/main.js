@@ -3,7 +3,10 @@
 
 	app.controller('PortfolioController', function() {
 		this.stocks = temp;
-		this.bank   = userBank;
+		this.bank   = 1000;
+        this.giveCash = function(val) {
+            this.bank += val;
+        };
 	});
 
 	// DEV: these represent dummy model data to test the controller.
@@ -16,8 +19,7 @@
                 name  : 'some other stock',
                 price : 12.4,
             }
-        ],
-        userBank = 10000;
+        ];
 
 
 }).call(this);
