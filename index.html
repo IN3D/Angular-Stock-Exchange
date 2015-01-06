@@ -23,6 +23,15 @@
 	<div class="container pull-left full-height">
 		<div class="row row-offcanvas row-offcanvas-left full-height">
 				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation" ng-controller="PortfolioController as portfolio">
+					<div class="bankContainer">
+						<h4>Your bank amount:</h4>
+						<p>{{bank}}</p>
+					</div>
+					<div class="searchContainer">
+						<h3>Search</h3>
+						<input type="search" placeholder="search for a stock to buy!" />
+						<button>SEARCH</button>
+					</div>
 					<ul class="nav">
 						<li ng-repeat="stock in portfolio.stocks"><a href="#">{{ stock.name }} @{{ stock.price | currency }}</a></li>
 					</ul>
