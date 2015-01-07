@@ -13,7 +13,6 @@
 				return vals;
 			},
 			setVals: function(v) {
-				console.log('in setVals');
 				vals.symbol = v.symbol;
 				vals.name   = v.name;
 				vals.ask    = v.ask;
@@ -28,7 +27,6 @@
 				if (symbol !== '') {
 					$http.get('http://data.benzinga.com/stock/' + symbol)
 					.success(function(data) {
-						console.log('in http success');
 						if (data.status !== 'error') {
 							FoundStock.setVals(data);
 						} else {

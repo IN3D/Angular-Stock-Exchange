@@ -6,6 +6,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="assets/js/main.js"></script>
     <script src="assets/js/factories.js"></script>
+    <script src="assets/js/directives.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="assets/css/main.css" rel="stylesheet"/>
@@ -23,25 +24,14 @@
 
 	<div class="container pull-left full-height">
 		<div class="row row-offcanvas row-offcanvas-left full-height">
-				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation" ng-controller="PortfolioController as portfolio">
-					<div class="searchContainer" ng-controller="SearchController as search">
-						<h3>Search</h3>
-                        <input type="search" placeholder="search for a stock to buy!" ng-model="search.symbol"></input>
-						<a ng-click="search.findStock()">SEARCH</a>
-					</div>
-					<div class="bankContainer">
-						<h3>Your bank amount:</h3>
-						<p>{{ portfolio.bank | currency:"USD $"}}</p>
-					</div>
-					<h3 class="yourStockHeader">Your Stocks</h3>
-					<ul class="nav">
-						<li ng-repeat="stock in portfolio.stocks"><a href="#">{{ stock.name }} @{{ stock.price | currency }}</a></li>
-					</ul>
-				</div>
+
+                <portfolio></portfolio>
 
 				<div class="col-xs-12 col-sm-9 mainContent">
-					<h3>Some Stock Name Here</h3>
-					<h5>Some text about it here</h5>
+					<h3>Stock Name:</h3>
+					<h5>Stock Symbol:</h5>
+                    <h6>Bid Price:</h6>
+                    <h6>Ask Price:</h6>
 				</div>
 			</div>
 		</div>
