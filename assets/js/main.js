@@ -1,28 +1,46 @@
 (function() {
 	var app = angular.module('market', []);
 
+	app.factory('FoundStock', function() {
+		var vals = {
+			symbol : '',
+			name   : '',
+			ask    : 0,
+			bid    : 0
+		};
+		return {
+			getVals: function() {
+				return vals;
+			},
+			setVals: function(v) {
+				vals.symbol = v.symbol;
+				vals.name   = v.name;
+				vals.ask    = v.ask;
+				vals.bid    = v.bid;
+			}
+		};
+	});
+
 	app.controller('PortfolioController', function() {
 		this.stocks = temp;
 		this.bank   = 1000;
-
-        this.giveCash = function(val) {
-            this.bank += val;
-        };
 	});
 
-    app.controller('SearchController', ['$http', function($http) {
-        this.searchVals = {
-            symbol : '',
-            name   : '',
-            ask    : 0,
-            bid    : 0
-        };
+    app.controller('SearchController', ['$http', 'FoundStock', function($http, FoundStock) {
 
         this.findStock = function() {
             if (this.symbol !== '') {
                 $http.get('http://data.benzinga.com/stock/' + this.searchVals.symbol)
                 .success(function(data) {
-                    console.log(data);
+					if ( data.status !== 'error' ) {
+						FoundStock.setVals(data);
+						console.log(FoundStock.getVals());
+
+					} else {
+						alert('invalid stock symbol');
+						// reset the symbol
+						this.searchVals.symbol = '';
+					}
                 })
                 .error(function() {
                     console.log("http GET failed.");
