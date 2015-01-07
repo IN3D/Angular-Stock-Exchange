@@ -27,10 +27,11 @@
 	});
 
     app.controller('SearchController', ['$http', 'FoundStock', function($http, FoundStock) {
+		this.symbol = '';
 
         this.findStock = function() {
             if (this.symbol !== '') {
-                $http.get('http://data.benzinga.com/stock/' + this.searchVals.symbol)
+                $http.get('http://data.benzinga.com/stock/' + this.symbol)
                 .success(function(data) {
 					if ( data.status !== 'error' ) {
 						FoundStock.setVals(data);
@@ -38,8 +39,6 @@
 
 					} else {
 						alert('invalid stock symbol');
-						// reset the symbol
-						this.searchVals.symbol = '';
 					}
                 })
                 .error(function() {
