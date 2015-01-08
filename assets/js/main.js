@@ -2,11 +2,19 @@
 	var app = angular.module('market', ['directives', 'factories']);
 
 	app.controller('PortfolioController', function() {
-		this.stocks = [];
+		this.stocks = [
+            {
+                name: 'Apple Computers Inc.',
+                symbol: 'aapl',
+                bid: 660,
+                ask: 660.25,
+            },
+        ];
 		this.bank   = 10000;
 
-		this.clicked = function(symbol) {
-			console.log(symbol + ' was clicked');
+		this.setSymbol = function(symbol) {
+            /*$cookies.symbol = symbol;
+			console.log("$cookies contains: " + $cookies.symbol);*/
 		};
 	});
 
