@@ -2,47 +2,30 @@
 <html ng-app="market">
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-cookies.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/factories.js"></script>
+	<script src="assets/js/directives.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="assets/css/main.css" rel="stylesheet"/>
 	<title>Angular Stock Exchange</title>
 </head>
-<body>
-	<div class="navbar navbar-default no-bottom-margin" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<h1 class="inline">Angular Stock exchange</h1>
-				<h2 class="inline padding">Where people go to trade!</h2>
+	<body>
+
+		<title-bar></title-bar>
+
+		<div class="container pull-left full-height">
+			<div class="row row-offcanvas row-offcanvas-left full-height">
+
+				<portfolio></portfolio>
+
+				<display-area></display-area>
+
 			</div>
 		</div>
-	</div>
 
-	<div class="container pull-left full-height">
-		<div class="row row-offcanvas row-offcanvas-left full-height">
-				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation" ng-controller="PortfolioController as portfolio">
-					<div class="searchContainer">
-						<h3>Search</h3>
-						<input type="search" placeholder="search for a stock to buy!" />
-						<a>SEARCH</a>
-					</div>
-					<div class="bankContainer">
-						<h3>Your bank amount:</h3>
-						<p>{{ portfolio.bank | currency:"USD $"}}</p>
-					</div>
-					<h3 class="yourStockHeader">Your Stocks</h3>
-					<ul class="nav">
-						<li ng-repeat="stock in portfolio.stocks"><a href="#">{{ stock.name }} @{{ stock.price | currency }}</a></li>
-					</ul>
-				</div>
-
-				<div class="col-xs-12 col-sm-9 mainContent">
-					<h3>Some Stock Name Here</h3>
-					<h5>Some text about it here</h5>
-				</div>
-			</div>
-		</div>
-</body>
+	</body>
 </html>

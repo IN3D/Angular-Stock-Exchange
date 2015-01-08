@@ -1,24 +1,29 @@
 (function() {
-	var app = angular.module('market', []);
+	var app = angular.module('market', ['directives', 'factories', 'ngCookies']);
 
-	app.controller('PortfolioController', function() {
-		this.stocks = temp;
-		this.bank = userBank;
-	});
+	app.controller('PortfolioController', ['$cookies', function($cookies) {
+		this.stocks = [
+            {
+                name: 'Apple Computers Inc.',
+                symbol: 'aapl',
+                bid: 660,
+                ask: 660.25,
+            },
+        ];
+		this.bank   = 10000;
 
-	// DEV: these represent dummy model data to test the controller.
-	var temp = [
-		{
-			name: 'some stock',
-			price: 34.82,
-		},
-		{
-			name: 'some other stock',
-			price: 12.4,
-		}
-	];
+		this.setSymbol = function(symbol) {
+            $cookies.symbol = symbol;
+			console.log("$cookies contains: " + $cookies.symbol);
+		};
+	}]);
 
-	var userBank = 10000.00;
+    app.controller('SearchController', ['Benzinga', function(Benzinga) {
+		this.symbol = '';
 
+        this.findStock = function() {
+			Benzinga.call(this.symbol);
+        };
+    }]);
 
 }).call(this);
