@@ -1,7 +1,7 @@
 (function() {
-	var app = angular.module('market', ['directives', 'factories']);
+	var app = angular.module('market', ['directives', 'factories', 'ngCookies']);
 
-	app.controller('PortfolioController', function() {
+	app.controller('PortfolioController', ['$cookies', function($cookies) {
 		this.stocks = [
             {
                 name: 'Apple Computers Inc.',
@@ -13,10 +13,10 @@
 		this.bank   = 10000;
 
 		this.setSymbol = function(symbol) {
-            /*$cookies.symbol = symbol;
-			console.log("$cookies contains: " + $cookies.symbol);*/
+            $cookies.symbol = symbol;
+			console.log("$cookies contains: " + $cookies.symbol);
 		};
-	});
+	}]);
 
     app.controller('SearchController', ['Benzinga', function(Benzinga) {
 		this.symbol = '';
